@@ -16,7 +16,7 @@ optimizer_config = dict(grad_clip=None)
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=500,
+    warmup_iters=10,
     warmup_ratio=0.001,
     step=[10, 15])
 total_epochs = 20
