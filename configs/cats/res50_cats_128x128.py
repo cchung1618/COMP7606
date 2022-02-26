@@ -9,7 +9,7 @@ evaluation = dict(interval=1, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=5e-6, # Tune the base learning rate
+    lr=1e-5, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
@@ -40,8 +40,8 @@ channel_cfg = dict( # DO NOT MODIFY THIS LINE
 # model settings
 model = dict(
     type='TopDown',
-    pretrained='torchvision://resnet50', # This is an ImageNet-pretrained model
-    backbone=dict(type='ResNet', depth=50),
+    pretrained='torchvision://resnet152', # This is an ImageNet-pretrained model
+    backbone=dict(type='ResNet', depth=152),
     keypoint_head=dict(
         type='TopdownHeatmapSimpleHead',
         in_channels=2048,
