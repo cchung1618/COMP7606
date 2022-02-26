@@ -9,7 +9,7 @@ evaluation = dict(interval=1, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=1e-5, # Tune the base learning rate
+    lr=5e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
@@ -55,8 +55,8 @@ model = dict(
         modulate_kernel=11))
 
 data_cfg = dict(
-    image_size=[128, 128], # You may also use higher input resolution, e.g. 256x256
-    heatmap_size=[32, 32], # heatmap_size should be 1/4 of the image_size
+    image_size=[256, 256], # You may also use higher input resolution, e.g. 256x256
+    heatmap_size=[64, 64], # heatmap_size should be 1/4 of the image_size
     num_output_channels=channel_cfg['num_output_channels'], # DO NOT MODIFY THIS LINE
     num_joints=channel_cfg['dataset_joints'], # DO NOT MODIFY THIS LINE
     dataset_channel=channel_cfg['dataset_channel'], # DO NOT MODIFY THIS LINE
