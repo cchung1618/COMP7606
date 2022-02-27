@@ -18,10 +18,10 @@ lr_config = dict( # You may choose another learning rate scheduler
     warmup='linear',
     warmup_iters=10,
     warmup_ratio=0.001,
-    step=[30, 40])
-total_epochs = 50
+    step=[30, 35])
+total_epochs = 40
 log_config = dict(
-    interval=5,
+    interval=1,
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='TensorboardLoggerHook')
@@ -82,7 +82,7 @@ train_pipeline = [
         type='NormalizeTensor',
         mean=[0.485, 0.456, 0.406], # This is the mean/var of the ImageNet dataset.
         std=[0.229, 0.224, 0.225]),
-    dict(type='TopDownGenerateTarget', sigma=1), # Sigma normally increases with the input size.
+    dict(type='TopDownGenerateTarget', sigma=2), # Sigma normally increases with the input size.
     dict(
         type='Collect',
         keys=['img', 'target', 'target_weight'],
