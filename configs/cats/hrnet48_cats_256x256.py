@@ -40,8 +40,7 @@ channel_cfg = dict( # DO NOT MODIFY THIS LINE
 # model settings
 model = dict(
     type='TopDown',
-    pretrained='https://download.openmmlab.com/mmpose/'
-    'pretrain_models/hrnet_w48-8ef0771d.pth',
+    pretrained=['../../hrnet/hrnet_w48-8ef0771d.pth'],
     backbone=dict(
         type='HRNet',
         in_channels=3,
