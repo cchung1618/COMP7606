@@ -9,17 +9,17 @@ evaluation = dict(interval=5, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=1e-5, # Tune the base learning rate
+    lr=2e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=10,
+    warmup_iters=250,
     warmup_ratio=0.001,
-    step=[30, 35])
-total_epochs = 40
+    step=[85, 100])
+total_epochs = 110
 log_config = dict(
     interval=1,
     hooks=[
@@ -74,7 +74,9 @@ train_pipeline = [
     dict(type='LoadImageFromFile'), # DO NOT MODIFY THIS LINE
     dict(type='TopDownRandomFlip', flip_prob=0.5), # It is suggested to perform random flipping.
     dict(
-        type='TopDownGetRandomScaleRotation', rot_factor=20, scale_factor=0.3), # You may tune these hyper-parameters
+        type='TopDownHalfBodyTransform', num_joints_half_body=8, prob_half_body=0.3),
+    dict(
+        type='TopDownGetRandomScaleRotation', rot_factor=40, scale_factor=0.5), # You may tune these hyper-parameters
     # You may also add more data augmentation pipelines here.
     dict(type='TopDownAffine'), # DO NOT MODIFY THIS LINE
     dict(type='ToTensor'), # DO NOT MODIFY THIS LINE
