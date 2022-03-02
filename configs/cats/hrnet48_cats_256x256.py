@@ -9,17 +9,17 @@ evaluation = dict(interval=5, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=5e-5, # Tune the base learning rate
+    lr=3e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=250,
+    warmup_iters=500,
     warmup_ratio=0.001,
-    step=[85, 100])
-total_epochs = 110
+    step=[35, 55])
+total_epochs = 60
 log_config = dict(
     interval=1,
     hooks=[
