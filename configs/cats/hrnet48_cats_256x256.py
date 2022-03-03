@@ -9,14 +9,14 @@ evaluation = dict(interval=5, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=5e-4, # Tune the base learning rate
+    lr=2e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=250,
+    warmup_iters=150,
     warmup_ratio=0.001,
     step=[35, 55])
 total_epochs = 60
