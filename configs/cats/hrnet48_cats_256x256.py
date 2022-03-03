@@ -1,7 +1,7 @@
 _base_ = ['../../../../_base_/datasets/cats.py'] # DO NOT MODIFY THIS LINE
 log_level = 'INFO'
-load_from = None
-resume_from = ['../models_test4/model.pth']
+load_from = ['../models_test4/model.pth']
+resume_from = None
 dist_params = dict(backend='nccl')
 workflow = [('train', 1)]
 checkpoint_config = dict(interval=1)
