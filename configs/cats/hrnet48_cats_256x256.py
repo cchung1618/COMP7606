@@ -16,7 +16,7 @@ optimizer_config = dict(grad_clip=None)
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=250,
+    warmup_iters=150,
     warmup_ratio=0.001,
     step=[35, 55])
 total_epochs = 60
@@ -105,7 +105,7 @@ train_pipeline = [
     dict(type='LoadImageFromFile'), # DO NOT MODIFY THIS LINE
     dict(type='TopDownRandomFlip', flip_prob=0.5), # It is suggested to perform random flipping.
     dict(type='TopDownHalfBodyTransform', num_joints_half_body=8, prob_half_body=0.3),
-    dict(type='TopDownGetRandomScaleRotation', rot_factor=30, scale_factor=0.4), # You may tune these hyper-parameters
+    dict(type='TopDownGetRandomScaleRotation', rot_factor=40, scale_factor=0.5), # You may tune these hyper-parameters
     # You may also add more data augmentation pipelines here.
     dict(type='TopDownAffine'), # DO NOT MODIFY THIS LINE
     dict(type='ToTensor'), # DO NOT MODIFY THIS LINE
