@@ -9,7 +9,7 @@ evaluation = dict(interval=5, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=2e-4, # Tune the base learning rate
+    lr=3e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
