@@ -9,17 +9,17 @@ evaluation = dict(interval=5, metric='mAP', save_best='AP')
 
 optimizer = dict(
     type='Adam', # You may choose other optimizers
-    lr=3e-4, # Tune the base learning rate
+    lr=5e-4, # Tune the base learning rate
 )
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=250,
+    warmup_iters=500,
     warmup_ratio=0.001,
-    step=[35, 55])
-total_epochs = 60
+    step=[60, 85])
+total_epochs = 90
 log_config = dict(
     interval=1,
     hooks=[
@@ -84,7 +84,7 @@ train_pipeline = [
         type='NormalizeTensor',
         mean=[0.485, 0.456, 0.406], # This is the mean/var of the ImageNet dataset.
         std=[0.229, 0.224, 0.225]),
-    dict(type='TopDownGenerateTarget', sigma=3), # Sigma normally increases with the input size.
+    dict(type='TopDownGenerateTarget', sigma=3, unbiased_encoding=True), # Sigma normally increases with the input size.
     dict(
         type='Collect',
         keys=['img', 'target', 'target_weight'],
