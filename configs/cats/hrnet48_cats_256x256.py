@@ -81,8 +81,8 @@ model = dict(
     train_cfg=dict(),
     test_cfg=dict(
         flip_test=True,
-        post_process='unbiased',
-        shift_heatmap=default,
+        post_process='default',
+        shift_heatmap=True,
         modulate_kernel=11))
 
 data_cfg = dict(
