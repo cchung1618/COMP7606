@@ -16,7 +16,7 @@ optimizer_config = dict(grad_clip=None)
 lr_config = dict( # You may choose another learning rate scheduler
     policy='step',
     warmup='linear',
-    warmup_iters=250,
+    warmup_iters=150,
     warmup_ratio=0.001,
     step=[50, 75])
 total_epochs = 80
@@ -113,7 +113,7 @@ train_pipeline = [
         type='NormalizeTensor',
         mean=[0.485, 0.456, 0.406], # This is the mean/var of the ImageNet dataset.
         std=[0.229, 0.224, 0.225]),
-    dict(type='TopDownGenerateTarget', sigma=3), # Sigma normally increases with the input size.
+    dict(type='TopDownGenerateTarget', sigma=2), # Sigma normally increases with the input size.
     dict(
         type='Collect',
         keys=['img', 'target', 'target_weight'],
