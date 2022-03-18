@@ -113,7 +113,7 @@ train_pipeline = [
         type='NormalizeTensor',
         mean=[0.485, 0.456, 0.406], # This is the mean/var of the ImageNet dataset.
         std=[0.229, 0.224, 0.225]),
-    dict(type='TopDownGenerateTarget', sigma=2), # Sigma normally increases with the input size.
+    dict(type='TopDownGenerateTarget', sigma=3), # Sigma normally increases with the input size.
     dict(
         type='Collect',
         keys=['img', 'target', 'target_weight'],
